@@ -68,7 +68,9 @@ button:disabled {
 }
 </style>
 <script>
-let board = ["", "", "", "", "", "", "", "", ""];
+
+    
+      let board = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let gameActive = true;
 
@@ -85,6 +87,7 @@ function startNewGame() {
     cells.forEach(cell => {
         cell.textContent = "";
         cell.disabled = false;
+        cell.style.backgroundColor = "white"; // Reset colore
     });
 }
 
@@ -101,7 +104,7 @@ function checkWinner() {
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
             gameActive = false;
             message.textContent = `Vince ${currentPlayer}!`;
-            pattern.forEach(index => cells[index].style.backgroundColor = "#4CAF50");
+            pattern.forEach(index => cells[index].style.backgroundColor = "#4CAF50"); // Colore verde per vincitori
             return;
         }
     }
@@ -138,8 +141,6 @@ restartButton.addEventListener("click", startNewGame);
 
 // Avvia una nuova partita all'inizio
 startNewGame();
-
-</script>
 
 </head>
 <body>
