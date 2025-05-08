@@ -34,14 +34,6 @@
       transition: all 0.2s ease;
     }
   </style>
-</head>
-<body>
-  <h1>Clicca il Quadrato!</h1>
-  <p>Punti: <span id="score">0</span></p>
-  <div id="game-area">
-    <div id="square"></div>
-  </div>
-
   <script>
     const square = document.getElementById("square");
     const gameArea = document.getElementById("game-area");
@@ -68,5 +60,14 @@
     // Muove il quadrato ogni 2 secondi
     setInterval(moveSquare, 2000);
   </script>
+</head>
+<body>
+  <h1>Clicca il Quadrato!</h1>
+  <p>Punti: <span id="score">0</span></p>
+  <div id="game-area">
+    <div id="square"></div>
+  </div>
+
+  
 </body>
 </html>
