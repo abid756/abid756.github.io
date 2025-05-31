@@ -41,7 +41,7 @@
   <div id="result"></div>
 
   <script>
-    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    const randomNumber = Math.floor(Math.random() * 1000) + 1;
     let attempts = 0;
 
     function checkGuess() {
