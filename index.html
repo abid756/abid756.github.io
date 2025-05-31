@@ -1,70 +1,62 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clicca il Quadrato</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Indovina il Numero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f0f8ff;
       text-align: center;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 20px;
+      padding: 50px;
     }
-
-    #game-area {
-      position: relative;
-      width: 600px;
-      height: 400px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      border: 2px solid #333;
-      overflow: hidden;
+    h1 {
+      color: #333;
     }
-
-    #square {
-      width: 50px;
-      height: 50px;
-      background-color: red;
-      position: absolute;
-      top: 100px;
-      left: 100px;
+    input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 60px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      margin-left: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>Clicca il Quadrato!</h1>
-  <p>Punti: <span id="score">0</span></p>
-  <div id="game-area">
-    <div id="square"></div>
-  </div>
 
-  <!-- SCRIPT posizionato DOPO il DOM -->
+  <h1>Indovina il Numero!</h1>
+  <p>Inserisci un numero tra 1 e 100:</p>
+  <input type="number" id="guess" min="1" max="100"/>
+  <button onclick="checkGuess()">Prova</button>
+  <div id="result"></div>
+
   <script>
-    const square = document.getElementById("square");
-    const gameArea = document.getElementById("game-area");
-    const scoreDisplay = document.getElementById("score");
-    let score = 0;
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
 
-    function moveSquare() {
-      const maxX = gameArea.clientWidth - square.clientWidth;
-      const maxY = gameArea.clientHeight - square.clientHeight;
-      const randomX = Math.floor(Math.random() * maxX);
-      const randomY = Math.floor(Math.random() * maxY);
-      square.style.left = randomX + "px";
-      square.style.top = randomY + "px";
+    function checkGuess() {
+      const userGuess = Number(document.getElementById('guess').value);
+      attempts++;
+
+      if (userGuess === randomNumber) {
+        document.getElementById('result').textContent = `Bravo! Hai indovinato in ${attempts} tentativi.`;
+      } else if (userGuess < randomNumber) {
+        document.getElementById('result').textContent = 'Troppo basso! Riprova.';
+      } else {
+        document.getElementById('result').textContent = 'Troppo alto! Riprova.';
+      }
     }
-
-    square.addEventListener("click", () => {
-      score++;
-      scoreDisplay.textContent = score;
-      moveSquare();
-    });
-
-    setInterval(moveSquare, 2000);
   </script>
+
 </body>
 </html>
