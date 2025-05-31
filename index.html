@@ -1,46 +1,16 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clicca il Quadrato</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 20px;
-    }
+<body>
+  <h1>Clicca il Quadrato!</h1>
+  <p>Punti: <span id="score">0</span></p>
+  <div id="game-area">
+    <div id="square"></div>
+  </div>
 
-    #game-area {
-      position: relative;
-      width: 600px;
-      height: 400px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      border: 2px solid #333;
-      overflow: hidden;
-    }
-
-    #square {
-      width: 50px;
-      height: 50px;
-      background-color: red;
-      position: absolute;
-      top: 100px;
-      left: 100px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-  </style>
   <script>
     const square = document.getElementById("square");
     const gameArea = document.getElementById("game-area");
     const scoreDisplay = document.getElementById("score");
     let score = 0;
 
-    // Muove il quadrato in una posizione casuale
     function moveSquare() {
       const maxX = gameArea.clientWidth - square.clientWidth;
       const maxY = gameArea.clientHeight - square.clientHeight;
@@ -50,24 +20,12 @@
       square.style.top = randomY + "px";
     }
 
-    // Aggiunge un punto al punteggio
     square.addEventListener("click", () => {
       score++;
       scoreDisplay.textContent = score;
       moveSquare();
     });
 
-    // Muove il quadrato ogni 2 secondi
     setInterval(moveSquare, 2000);
   </script>
-</head>
-<body>
-  <h1>Clicca il Quadrato!</h1>
-  <p>Punti: <span id="score">0</span></p>
-  <div id="game-area">
-    <div id="square"></div>
-  </div>
-
-  
 </body>
-</html>
