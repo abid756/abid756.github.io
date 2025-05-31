@@ -35,21 +35,21 @@
 <body>
 
   <h1>Indovina il Numero!</h1>
-  <p>Inserisci un numero tra 1 e 1000:</p>
-  <input type="number" id="guess" min="1" max="1000"/>
+  <p>Inserisci un numero tra 1 e 100:</p>
+  <input type="number" id="guess" min="1" max="100"/>
   <button onclick="checkGuess()">Prova</button>
   <div id="result"></div>
   <button onclick="resetGame()">Ricomincia</button>
 
   <script>
-    let randomNumber = Math.floor(Math.random() * 1000) + 1;
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
     let attempts = 0;
 
     function checkGuess() {
       const userGuess = Number(document.getElementById('guess').value);
       attempts++;
       function resetGame() {
-  randomNumber = Math.floor(Math.random() * 1000) + 1;
+  randomNumber = Math.floor(Math.random() * 100) + 1;
   attempts = 0;
   document.getElementById('result').textContent = '';
   document.getElementById('guess').value = '';
