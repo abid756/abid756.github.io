@@ -39,14 +39,22 @@
   <input type="number" id="guess" min="1" max="1000"/>
   <button onclick="checkGuess()">Prova</button>
   <div id="result"></div>
+  <button onclick="resetGame()">Ricomincia</button>
 
   <script>
-    const randomNumber = Math.floor(Math.random() * 1000) + 1;
+    let randomNumber = Math.floor(Math.random() * 1000) + 1;
     let attempts = 0;
 
     function checkGuess() {
       const userGuess = Number(document.getElementById('guess').value);
       attempts++;
+      function resetGame() {
+  randomNumber = Math.floor(Math.random() * 1000) + 1;
+  attempts = 0;
+  document.getElementById('result').textContent = '';
+  document.getElementById('guess').value = '';
+}
+
 
       if (userGuess === randomNumber) {
         document.getElementById('result').textContent = `Bravo! Hai indovinato in ${attempts} tentativi.`;
